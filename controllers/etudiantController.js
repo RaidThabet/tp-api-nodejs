@@ -319,3 +319,29 @@ exports.advancedSearch = async (req, res) => {
     });
   }
 };
+
+exports.getEtudiantsSorted = async (req, res) => {
+  try {
+    const { sortBy, order } = req.query;
+    const sortOptions = {};
+    if (sortBy) {
+      sortOptions[sortBy] = order === 'desc' ? -1 : 1;
+    }
+
+    const etudiants = await Etudiant.find({ actif: true }).sort(sortOptions);
+
+    res.status(200).json({
+      success: true,
+      count: etudiants.length,
+      sortBy,
+      order,
+      data: etudiants
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Erreur serveur',
+      error: error.message
+    });
+  }
+}

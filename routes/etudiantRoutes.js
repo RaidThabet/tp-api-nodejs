@@ -26,6 +26,10 @@ router
   .get(getAllEtudiants)
   .post(createEtudiant);
 
+// Route: /api/etudiants/sorted
+// GET → Liste tous les étudiants triés par nom
+router.get('/sorted', getAllEtudiantsSorted);
+
 // Route: /api/etudiants/search?q=...
 // Recherche par nom ou prénom
 router.get('/search', searchEtudiants);
