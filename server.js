@@ -1,6 +1,7 @@
 // ============================================
 // IMPORTS
 // ============================================
+// Serveur Express principal - Application de gestion des étudiants
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/database');
@@ -87,3 +88,5 @@ app.listen(PORT, () => {
   `);
 });
 
+// Modification temporaire
+// Fonction utilitaire
